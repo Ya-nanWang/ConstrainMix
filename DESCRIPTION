@@ -1,0 +1,12 @@
+Package: ConstrainMix
+Title: Pseudorandomization with Flexible Constraints
+Version: 0.1.0
+Authors@R: 
+    person("Yanan", "Wang", , "ya-nan.wang@outlook.com", role = c("aut", "cre"))
+Description: A tool for generating pseudorandomized lists for psycho/neuro-linguistics 
+    and behavioral experiments. It allows users to define flexible constraints 
+    (e.g., maximum repetition, minimum distance) and weights to optimize trial sequences.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
