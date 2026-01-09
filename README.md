@@ -396,8 +396,6 @@ print(violations)
 
 ## Citation
 
-If you use this package in your research, please cite:
-
 ```
 Wang, Y. (2026). ConstrainMix: Pseudorandomization with Flexible Constraints. 
 R package version 0.1.0. https://github.com/Ya-nanWang/ConstrainMix
