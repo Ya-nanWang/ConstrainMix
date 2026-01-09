@@ -280,19 +280,47 @@ analyze_repetition_distribution(results[[1]]$data, "Occurrence")
 
 ## How It Works
 
-### The Vertical Control Principle (Column-Based)
+### 1.The Vertical Control Principle (Column-Based)
 Following the design philosophy of **Mix** (van Casteren & Davis, 2006), ConstrainMix operates on a **vertical control principle**:
 - **Constraint Scope**: All constraints (e.g., `max_rep`, `min_dist`) are applied to specific columns independently.
 - **Feature Independence**: The algorithm optimizes the sequence based on the properties defined within those columns.
 - **Implementation Note**: It does **not** automatically detect cross-item dependencies (e.g., phonological similarity between a target and the following distractor) unless those features are explicitly represented in a column and constrained.
 
-### Item-Level Latin Square Balancing
-Unlike tools that balance only at the condition level, ConstrainMix ensures rigorous **Item-level counterbalancing**:
-- **Granular Rotation**: Each unique item (identified by `item_col`) is assigned to a specific rotation pattern.
-- **True Counterbalancing**: This ensures that every individual item—regardless of its condition—is balanced across different list versions and experimental blocks over the full set of generated lists.
-- **Statistical Rigor**: This approach minimizes item-specific artifacts, ensuring that your experimental effects are not driven by the specific placement of individual stimuli.
+### 2.Item-Level Latin Square Balancing
+Unlike tools that balance only at the condition level, ConstrainMix ensures rigorous **item-level counterbalancing**:
+**Conceptual Distinction:**
+- **Condition-Level Balancing**: Entire conditions are assigned to blocks (e.g., all "Related" items in Block 1)
+- **Item-Level Balancing**: Each individual item rotates across blocks in different list versions
 
-### Optimization Algorithm
+**Working Steps:**
+1. Generate all possible block assignment patterns using combinatorics
+2. Each unique item is assigned a specific rotation pattern
+3. Different list versions systematically rotate which items appear in which blocks
+4. Across all versions, every item appears in each block approximately equally
+
+**Statistical Benefits:**
+- **Eliminates Item Confounds**: Ensures experimental effects are not driven by specific item placements
+- **True Counterbalancing**: Every individual item—regardless of condition—is balanced across versions and blocks
+- **Between-Subject Balance**: Achieves rigorous counterbalancing while maintaining within-subject randomization
+
+**Example:**
+```
+Item_001 (Condition A):
+  Version 1: Block 1
+  Version 2: Block 2
+  Version 3: Block 1
+  ...
+
+Item_002 (Condition A):
+  Version 1: Block 2
+  Version 2: Block 1
+  Version 3: Block 2
+  ...
+```
+
+This granular rotation ensures that condition effects are not confounded with block effects at the item level.
+
+### 3.Optimization Algorithm
 
 ConstrainMix uses **simulated annealing** to find optimal orderings:
 
@@ -301,16 +329,7 @@ ConstrainMix uses **simulated annealing** to find optimal orderings:
 3. Accept swaps that improve constraint satisfaction
 4. Continue until convergence or max iterations
 
-### Latin Square Counterbalancing
-
-For multi-block designs:
-
-1. Divides conditions into blocks using combinatorial patterns
-2. Different list versions use different block assignment patterns
-3. Ensures each item appears in each pattern approximately equally across versions
-4. Achieves between-subject balance
-
-### Constraint Scoring
+### 4.Constraint Scoring
 
 - **Hard constraints**: High penalty (weight = 10,000) for violations
 - **Soft constraints**: Low penalty (weight = 10) for violations
