@@ -300,7 +300,7 @@ Unlike tools that balance only at the condition level, ConstrainMix ensures rigo
 
 **Statistical Benefits:**
 - **Eliminates Item Confounds**: Ensures experimental effects are not driven by specific item placements
-- **True Counterbalancing**: Every individual item—regardless of condition—is balanced across versions and blocks
+- **True Counterbalancing**: Every individual item, regardless of condition, is balanced across versions and blocks
 - **Between-Subject Balance**: Achieves rigorous counterbalancing while maintaining within-subject randomization
 
 **Example:**
