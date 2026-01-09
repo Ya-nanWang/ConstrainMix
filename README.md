@@ -280,13 +280,13 @@ analyze_repetition_distribution(results[[1]]$data, "Occurrence")
 
 ## How It Works
 
-### 1.The Vertical Control Principle (Column-Based)
+### 1. The Vertical Control Principle (Column-Based)
 Following the design philosophy of **Mix** (van Casteren & Davis, 2006), ConstrainMix operates on a **vertical control principle**:
 - **Constraint Scope**: All constraints (e.g., `max_rep`, `min_dist`) are applied to specific columns independently.
 - **Feature Independence**: The algorithm optimizes the sequence based on the properties defined within those columns.
 - **Implementation Note**: It does **not** automatically detect cross-item dependencies (e.g., phonological similarity between a target and the following distractor) unless those features are explicitly represented in a column and constrained.
 
-### 2.Item-Level Latin Square Balancing
+### 2. Item-Level Latin Square Balancing
 Unlike tools that balance only at the condition level, ConstrainMix ensures rigorous **item-level counterbalancing**:
 **Conceptual Distinction:**
 - **Condition-Level Balancing**: Entire conditions are assigned to blocks (e.g., all "Related" items in Block 1)
@@ -320,7 +320,7 @@ Item_002 (Condition A):
 
 This granular rotation ensures that condition effects are not confounded with block effects at the item level.
 
-### 3.Optimization Algorithm
+### 3. Optimization Algorithm
 
 ConstrainMix uses **simulated annealing** to find optimal orderings:
 
@@ -329,7 +329,7 @@ ConstrainMix uses **simulated annealing** to find optimal orderings:
 3. Accept swaps that improve constraint satisfaction
 4. Continue until convergence or max iterations
 
-### 4.Constraint Scoring
+### 4. Constraint Scoring
 
 - **Hard constraints**: High penalty (weight = 10,000) for violations
 - **Soft constraints**: Low penalty (weight = 10) for violations
