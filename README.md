@@ -48,7 +48,7 @@ Since I needed to implement such functionality for my own project anyway, I deci
 
 While it was conceptually inspired by Mix, the underlying algorithms are different. Based on my own experimental needs, this package is designed to maximize stimulus balance under multiple nested constraints. Unlike the "black box" nature of older executables, ConstrainMix provides explicit feedback mechanisms, allowing users to precisely diagnose which constraints are violated and where.
 
-As the code was originally developed for my own picture–word interference (PWI) experiment, some parts may not be fully generalizable, although I have made efforts to avoid unnecessary task-specific assumptions. Since this package is currently maintained by a single developer, updates and fixes may not always be immediate.
+As the code was originally developed for my own picture naming experiment, some parts may not be fully generalizable, although I have made efforts to avoid unnecessary task-specific assumptions. Since this package is currently maintained by a single developer, updates and fixes may not always be immediate.
 
 ---
 
